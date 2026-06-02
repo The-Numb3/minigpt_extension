@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Context Mini GPT",
+  "version": "0.1.0",
+  "description": "Context-aware mini concept window for ChatGPT and Gemini.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://curly-winner-qwx9j9w7579h465q-8787.app.github.dev/*",
+    "https://minigpt-jj7i.onrender.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*", "https://gemini.google.com/*"],
+      "js": ["src/content/index.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open Context Mini GPT"
+  }
+}
